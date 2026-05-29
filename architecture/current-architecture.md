@@ -1,5 +1,13 @@
 # Current Architecture
 
+![ONI-CADIA current Azure architecture](./oni-cadia-agentic-civilization-azure.drawio.png)
+
+Editable draw.io source:
+
+- `oni-cadia-agentic-civilization-azure.drawio`
+- `oni-cadia-agentic-civilization-azure.drawio.svg`
+- `oni-cadia-agentic-civilization-azure.drawio.png`
+
 ```mermaid
 flowchart TB
   Judges["Judges / enterprise reviewers"] -->|HTTPS browser| Mattermost["Azure Container Apps: Mattermost public square"]

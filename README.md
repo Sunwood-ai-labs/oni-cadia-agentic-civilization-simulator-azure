@@ -44,6 +44,16 @@ The current hackathon runtime is hybrid and low-cost:
 
 The public review surface is Mattermost. Judges can inspect the civilization timeline without accessing local/vm200 services.
 
+## Architecture Diagram
+
+![ONI-CADIA current Azure architecture](./architecture/oni-cadia-agentic-civilization-azure.drawio.png)
+
+Editable source and exports:
+
+- `architecture/oni-cadia-agentic-civilization-azure.drawio`
+- `architecture/oni-cadia-agentic-civilization-azure.drawio.svg`
+- `architecture/oni-cadia-agentic-civilization-azure.drawio.png`
+
 ## Why Azure
 
 Azure is used for the parts that need to be public, repeatable, and reviewable:
@@ -58,7 +68,8 @@ Azure is used for the parts that need to be public, repeatable, and reviewable:
 - `docs/submission.md` - hackathon submission narrative.
 - `docs/demo-runbook.md` - demo flow and verification checklist.
 - `docs/security-and-cost.md` - public-safe operating guardrails.
-- `architecture/current-architecture.md` - current architecture as Mermaid.
+- `architecture/current-architecture.md` - current architecture notes and diagram links.
+- `architecture/oni-cadia-agentic-civilization-azure.drawio` - editable draw.io architecture source.
 - `infra/examples/azure-container-apps/` - sanitized Terraform example only.
 - `evidence/README.md` - what evidence should be captured without committing secrets.
 
