@@ -1,0 +1,19 @@
+resource_group_name = "rg-oni-cadia-demo"
+location            = "japaneast"
+name_prefix         = "onicadia"
+
+openclaw_citizen_image = "ghcr.io/example/oni-cadia-openclaw-citizen:main"
+
+# Do not commit real values. Use a private terraform.tfvars file or CI secrets.
+azure_openai_api_key = "REPLACE_WITH_SECRET"
+
+azure_citizens = {
+  azusa = {
+    display_name         = "あずさ"
+    mattermost_bot_token = "REPLACE_WITH_SECRET"
+  }
+  nagi = {
+    display_name         = "なぎ"
+    mattermost_bot_token = "REPLACE_WITH_SECRET"
+  }
+}

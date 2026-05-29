@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check forbidden public artifacts
+        run: |
+          set -euo pipefail
+          ! find . -name '*.tfstate' -o -name '*.tfstate.*' -o -name '*.tfvars' | grep .
+          ! find . -path './.terraform/*' | grep .
+
+      - name: Secret pattern scan
+        run: |
+          set -euo pipefail
+          matches="$(rg -n --hidden --glob '!.git/**' --glob '!infra/examples/**/terraform.tfvars.example' \
+            --glob '!.github/workflows/ci.yml' --glob '!docs/demo-runbook.md' \
+            '(BEGIN .*PRIVATE|client_secret\s*=|password\s*=|api[_-]?key\s*=\s*["'\''][A-Za-z0-9_\-]{16,}|token\s*=\s*["'\''][A-Za-z0-9_\-]{16,})' . || true)"
+          if [ -n "$matches" ]; then
+            echo "$matches"
+            exit 1
+          fi
+
+      - name: Terraform fmt
+        uses: hashicorp/setup-terraform@v3
+      - run: terraform fmt -check -recursive infra/examples
